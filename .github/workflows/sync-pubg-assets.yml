@@ -1,0 +1,50 @@
+name: Sync PUBG assets subset
+
+on:
+  schedule:
+    # Runs once a day at 03:00 UTC – tweak as you like
+    - cron: "0 3 * * *"
+  workflow_dispatch: {}   # allows manual “Run workflow” from Actions tab
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout subset repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false  # we'll use GITHUB_TOKEN explicitly
+
+      - name: Clone PUBG api-assets (upstream)
+        run: |
+          git clone --depth 1 https://github.com/pubg/api-assets.git upstream
+
+      - name: Copy selected folders into subset repo
+        run: |
+          # Remove existing copies so deletions upstream are mirrored
+          rm -rf Assets dictionaries
+
+          # Recreate the minimal tree
+          mkdir -p Assets
+          cp -R upstream/Assets/Item  Assets/
+          cp -R upstream/Assets/Icons Assets/
+
+          mkdir -p dictionaries/telemetry/item
+          cp upstream/dictionaries/telemetry/item/itemId.json dictionaries/telemetry/item/
+
+      - name: Commit and push if there are changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git status --porcelain | grep .; then
+            echo "Changes detected, committing..."
+            git add Assets dictionaries
+            git commit -m "Sync PUBG assets from pubg/api-assets"
+            git push origin HEAD:main
+          else
+            echo "No changes to commit."
+          fi
