@@ -40,11 +40,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if git status --porcelain | grep .; then
+          # Only check for changes under Assets/ and dictionaries/
+          if git status --porcelain Assets dictionaries | grep .; then
             echo "Changes detected, committing..."
             git add Assets dictionaries
             git commit -m "Sync PUBG assets from pubg/api-assets"
             git push origin HEAD:main
           else
-            echo "No changes to commit."
+            echo "No changes, nothing to commit."
           fi
+
