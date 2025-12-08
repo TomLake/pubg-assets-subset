@@ -2,41 +2,31 @@ name: Sync PUBG assets subset
 
 on:
   schedule:
-    # Runs once a day at 03:00 UTC – tweak as you like
+    # Runs once a day at 03:00 UTC
     - cron: "0 3 * * *"
-  workflow_dispatch: {}   # allows manual “Run workflow” from Actions tab
+  workflow_dispatch:   # allows manual “Run workflow” from Actions tab
 
 jobs:
   sync:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Commit and push if there are changes
-  run: |
-    git config user.name "github-actions[bot]"
-    git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-    if git status --porcelain Assets dictionaries | grep .; then
-      echo "Changes detected, committing..."
-      git add Assets dictionaries
-      git commit -m "Sync PUBG assets from pubg/api-assets"
-      git push origin HEAD:main
-    else
-      echo "No changes, nothing to commit."
-    fi
-
+      - name: Checkout subset repo
+        uses: actions/checkout@v4
+        with:
+          # let checkout configure the remote with this token
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Clone PUBG api-assets (upstream)
         run: |
           git clone --depth 1 https://github.com/pubg/api-assets.git upstream
 
-           - name: Copy selected folders into subset repo
+      - name: Copy selected folders into subset repo
         run: |
-          # Remove existing copies so deletions upstream are mirrored,
-          # but DON'T delete custom/ overrides.
+          # Remove only the parts that come from upstream,
+          # so Assets/custom and dictionaries/custom survive.
           rm -rf Assets/Item
           rm -rf Assets/Icons
-          
           rm -rf dictionaries/telemetry
 
           # Recreate the minimal tree
@@ -46,7 +36,6 @@ jobs:
 
           mkdir -p dictionaries/telemetry/item
           cp upstream/dictionaries/telemetry/item/itemId.json dictionaries/telemetry/item/
-
 
       - name: Commit and push if there are changes
         env:
@@ -64,4 +53,3 @@ jobs:
           else
             echo "No changes, nothing to commit."
           fi
-
