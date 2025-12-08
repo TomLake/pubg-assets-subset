@@ -34,7 +34,9 @@ jobs:
         run: |
           # Remove existing copies so deletions upstream are mirrored,
           # but DON'T delete custom/ overrides.
-          rm -rf Assets
+          rm -rf Assets/Item
+          rm -rf Assets/Icons
+          
           rm -rf dictionaries/telemetry
 
           # Recreate the minimal tree
