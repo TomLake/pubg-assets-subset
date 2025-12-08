@@ -30,10 +30,12 @@ jobs:
         run: |
           git clone --depth 1 https://github.com/pubg/api-assets.git upstream
 
-      - name: Copy selected folders into subset repo
+           - name: Copy selected folders into subset repo
         run: |
-          # Remove existing copies so deletions upstream are mirrored
-          rm -rf Assets dictionaries
+          # Remove existing copies so deletions upstream are mirrored,
+          # but DON'T delete custom/ overrides.
+          rm -rf Assets
+          rm -rf dictionaries/telemetry
 
           # Recreate the minimal tree
           mkdir -p Assets
@@ -42,6 +44,7 @@ jobs:
 
           mkdir -p dictionaries/telemetry/item
           cp upstream/dictionaries/telemetry/item/itemId.json dictionaries/telemetry/item/
+
 
       - name: Commit and push if there are changes
         env:
