@@ -6,6 +6,9 @@ on:
     - cron: "0 3 * * *"
   workflow_dispatch:   # allows manual “Run workflow” from Actions tab
 
+permissions:
+  contents: write     # 👈 allow GITHUB_TOKEN to push commits
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -14,7 +17,6 @@ jobs:
       - name: Checkout subset repo
         uses: actions/checkout@v4
         with:
-          # let checkout configure the remote with this token
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Clone PUBG api-assets (upstream)
