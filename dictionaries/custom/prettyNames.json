@@ -11,7 +11,7 @@
     "Medal_ChickenDinner_01": "Winner Winner Medal"
   },
 "map": {
-  "Baltic_Main": "Erangel (Remastered)",
+  "Baltic_Main": "Erangel",
   "Chimera_Main": "Paramo",
   "Desert_Main": "Miramar",
   "DihorOtok_Main": "Vikendi",
@@ -23,6 +23,9 @@
   "Summerland_Main": "Karakin",
   "Tiger_Main": "Taego",
   "Neon_Main": "Rondo",
-  "Pillarcompound_Main": "Pillar"
+  "Italy_Main": "Riviera",
+  "Italy_TDM_Main": "Riviera",
+  "Pillarcompound_Main": "Pillar",
+  "Boardwalk_Main": "Boardwalk"
 }
 }
