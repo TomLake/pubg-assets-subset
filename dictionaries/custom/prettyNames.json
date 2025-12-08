@@ -1,0 +1,12 @@
+{
+  "item": {
+    "Item_Weapon_Groza_C": "Groza (Assault Rifle)",
+    "Item_Weapon_M416_C": "M416 (Custom)"
+  },
+  "season": {
+    "division.bro.official.pc-2023-04": "2023 Ranked Season 4"
+  },
+  "medal": {
+    "Medal_ChickenDinner_01": "Winner Winner Medal"
+  }
+}
