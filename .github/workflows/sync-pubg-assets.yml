@@ -11,10 +11,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout subset repo
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false  # we'll use GITHUB_TOKEN explicitly
+      - name: Commit and push if there are changes
+  run: |
+    git config user.name "github-actions[bot]"
+    git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+    if git status --porcelain Assets dictionaries | grep .; then
+      echo "Changes detected, committing..."
+      git add Assets dictionaries
+      git commit -m "Sync PUBG assets from pubg/api-assets"
+      git push origin HEAD:main
+    else
+      echo "No changes, nothing to commit."
+    fi
+
 
       - name: Clone PUBG api-assets (upstream)
         run: |
