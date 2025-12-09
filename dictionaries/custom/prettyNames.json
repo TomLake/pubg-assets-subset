@@ -29,5 +29,8 @@
   "Italy_TDM_Main": "Riviera",
   "Pillarcompound_Main": "Pillar",
   "Boardwalk_Main": "Boardwalk"
-}
+},
+  "gameMode": {
+    "tdm": "Team Deathmatch"
+  }
 }
