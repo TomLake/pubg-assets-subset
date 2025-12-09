@@ -36,8 +36,13 @@ jobs:
           cp -R upstream/Assets/Item  Assets/
           cp -R upstream/Assets/Icons Assets/
 
+          # Telemetry item IDs
           mkdir -p dictionaries/telemetry/item
           cp upstream/dictionaries/telemetry/item/itemId.json dictionaries/telemetry/item/
+
+          # 👉 NEW: game modes dictionary
+          mkdir -p dictionaries
+          cp upstream/dictionaries/gameMode.json dictionaries/
 
       - name: Commit and push if there are changes
         env:
