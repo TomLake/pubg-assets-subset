@@ -10,6 +10,26 @@
       "id": "taego",
       "name": "Taego",
       "imagePath": "secret-rooms/maps/taego.png"
+    },
+    {
+      "id": "rondo",
+      "name": "Rondo",
+      "imagePath": "secret-rooms/maps/rondo.png"
+    },
+    {
+      "id": "deston",
+      "name": "Deston",
+      "imagePath": "secret-rooms/maps/deston.png"
+    },
+    {
+      "id": "vikendi",
+      "name": "Vikendi",
+      "imagePath": "secret-rooms/maps/vikendi.png"
+    },
+    {
+      "id": "paramo",
+      "name": "Paramo",
+      "imagePath": "secret-rooms/maps/paramo.png"
     }
   ]
 }
