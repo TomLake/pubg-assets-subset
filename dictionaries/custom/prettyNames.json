@@ -1,7 +1,7 @@
 {
   "item": {
-    "Item_Weapon_Groza_C": "Groza (Assault Rifle)",
-    "Item_Weapon_M416_C": "M416 (Custom)",
+    "Item_Weapon_Groza_C": "Groza",
+    "Item_Weapon_M416_C": "M416",
     "Item_Weapon_CoverStructDropHandFlare_C": "Deployable Cover",
     "Item_Attach_Weapon_Muzzle_AR_MuzzleBrake_C": "Muzzle Brake",
     "Item_Weapon_IntegratedRepair_C": "Repair Kit"
