@@ -4,7 +4,8 @@
     "Item_Weapon_M416_C": "M416",
     "Item_Weapon_CoverStructDropHandFlare_C": "Deployable Cover",
     "Item_Attach_Weapon_Muzzle_AR_MuzzleBrake_C": "Muzzle Brake",
-    "Item_Weapon_IntegratedRepair_C": "Repair Kit"
+    "Item_Weapon_IntegratedRepair_C": "Repair Kit",
+    "Item_Weapon_FAMASG2_C": "FAMAS"
   },
   "season": {
     "division.bro.official.pc-2023-04": "2023 Ranked Season 4"
