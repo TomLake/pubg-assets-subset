@@ -4,6 +4,8 @@
     "Item_Weapon_M416_C": "M416",
     "Item_Weapon_CoverStructDropHandFlare_C": "Deployable Cover",
     "Item_Attach_Weapon_Muzzle_AR_MuzzleBrake_C": "Muzzle Brake",
+    "Item_Attach_Weapon_Lower_TiltedGrip_C": "Tilted Grip",
+    "Item_Attach_Weapon_Upper_DualOptic_4x1x_C": "Hybrid Scope",
     "Item_Weapon_IntegratedRepair_C": "Repair Kit",
     "Item_Weapon_FAMASG2_C": "FAMAS",
     "Item_Weapon_BluezoneGrenade_Subzero_C": "BZ Nade"
